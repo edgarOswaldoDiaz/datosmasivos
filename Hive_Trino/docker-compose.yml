@@ -1,0 +1,52 @@
+######### Componentes Hive & Trino #########
+version: "3.7"
+
+services:
+
+  hive-server:
+    container_name: hive-server
+    ports: 
+      - 10002:10002
+    image: hive:2.3.9
+    build:
+      context: services/hive
+      dockerfile: hive.dockerfile
+      args:
+        HADOOP_VERSION: 3.2.0
+        HIVE_VERSION: 2.3.9
+    env_file:
+      - ./services/hive/hive.env
+    environment:
+      HIVE_SITE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://hive-metastore/metastore"
+      HIVE_SITE_CONF_hive_metastore_uris: "thrift://hive-metastore:9083"
+      HIVE_SITE_CONF_hive_server2_active_passive_ha_enable: "true"
+    depends_on: 
+      - hive-metastore
+
+  hive-metastore:
+    container_name: hive-metastore
+    image: hive:2.3.9
+    build:
+      context: services/hive
+      dockerfile: hive.dockerfile
+      args:
+        HADOOP_VERSION: 3.2.0
+        HIVE_VERSION: 2.3.9
+    env_file:
+      - ./services/hive/hive.env
+    command: hivemetastore
+    restart: unless-stopped
+
+  trino:
+    container_name: trino
+    image: trinodb/trino:358
+    ports:
+      - 8080:8080
+    volumes:
+      - "./services/trino/config.properties:/etc/trino/config.properties"
+      - "./services/trino/hive.properties:/etc/trino/catalog/hive.properties"
+
+networks:
+  default:
+    driver: bridge
+    name: lagodedatosnetwork

@@ -1,0 +1,69 @@
+# Componente GitLab versión comunity
+version: "3.6"
+services:
+  web:
+    # Se toma la imagen comunity edition (ce) ya que la otra requiere licencia
+    image: 'gitlab/gitlab-ce:13.12.8-ce.0'
+    # Nombre que se le da al contenedor se peude cabiar para ajustar necesidades, u omitir para establecer el nombre del directorio mas el nombre del servicio
+    container_name: GitLab
+    # reiniciar siempre aunque falle o se reinicie el seervidor
+    restart: always
+    # Nombre del host, este se esta usando solo como un placeholder. Se establece el puerto 180 para evitar colisiones con el puerto http. el numero de puerto es totalmente arbitrario
+    # TODO: cambiar por un nombre de host valido
+    # hostname: 'gitlab.example.com:180'
+    environment:
+      # Con esta variable se puede preconfigurar gitlab. De cualquier manera se peude configurar modificando con: docker exec -it gitlab editor /etc/gitlab/gitlab.rb
+      # external_url establece el nombre del host. Por el momento se deja el default para pruebas pero debe establecerse el adecuado. Se agrega tambien el puerto cuando este no es el estandar (80 http o 443 https)
+      # letsencrypt['enable'] permite la creacion y revison de certificados ssl mediante letsencrypt. Se desactiva para pruebas pero debe establecerce una metodolgia de certificados para acceder a https
+      # gitlab_rails['gitlab_shell_ssh_port'] establece el puerto para ssh en caso de que el puerto por default no se encuentre disponible. Nota: Esto NO se ha probado
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:180'
+        letsencrypt['enable'] = false
+        gitlab_rails['gitlab_shell_ssh_port'] = 122
+    #    # Add any other gitlab.rb configuration here, each on its own line
+    # Se requiere el uso de los puertos 80 (http), 443 (https) y 22 (pull y push mediante ssh) en la version por default. Estos se pueden cambiar (ver GITLAB_OMNIBUS_CONFIG con los cambios necesarios)
+    ports:
+      - '180:180'
+#      - '443:443'
+      - '122:22'
+    # Se cargan 3 volumnes para congiguracion, logs y datos respectivamente. EN esta configuracion son subdirectorios de donde se encuentra este archivo.
+    # Se utilizan volumnenes nombrados que solo seran accesibles mediante docker ya que utilizar directorios del anfitrion puede resultar en problemas con los permisos (al menos en windows)
+    volumes:
+      - 'gitlab_config:/etc/gitlab'
+      - 'gitlab_logs:/var/log/gitlab'
+      - 'gitlab_data:/var/opt/gitlab'
+
+  runner:
+  # TODO: Cambiar latest por un numero de version
+    image: 'gitlab/gitlab-runner:latest'
+    container_name: GitLab-Runner
+    volumes:
+    # El runner requiere acceder al socket de docker. Esto no me parece buena idea pero no funciona sin esto. Marca
+    # ERROR: Failed to remove network for build
+    # ERROR: Preparation failed: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running? (docker.go:865:0s)
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Volumen de configuraciones. Se puede cambiara una carpeta en el host
+      - runner-config:/etc/gitlab-runner
+
+    # reiniciar siempre aunque falle o se reinicie el servidor
+    restart: always
+    depends_on:
+    - web
+
+# Para registrar el runner en la instancia de gitlab se ejecuta reemplazando los datos correspondientes
+# docker-compose run runner register --non-interactive --url "[URL]" --registration-token "[]" --executor "docker" --docker-image ubuntu:latest --description "[descripcion]" --tag-list "[tag1,tag2,...]" --run-untagged="true" --locked="f$# por ejemplo
+# docker-compose run --rm runner register --non-interactive --url "http://web:180/" --registration-token "iNiB8pMh9fvhrinDR5oS" --executor "docker" --docker-image ubuntu:latest --description "runner de dorker de ejemplo" --tag-list "doc$#docker-compose run --rm runner register --non-interactive --url "http://10.110.11.200:180/" --registration-token "d5vcqMU4ai6mpo4WvFsd" --executor "docker" --docker-image ubuntu:latest --description "Runner de docker para el proyecto d$
+# se definen los volumenes nombrados. En este caso no requieren ninguna configuracion especial
+volumes:
+  gitlab_config:
+    external: true
+  gitlab_logs:
+    external: true
+  gitlab_data:
+    external: true
+  runner-config:
+
+networks:
+  default:
+     name: Laboratorio-network
+

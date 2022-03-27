@@ -1,0 +1,19 @@
+# Componente knowage
+version: "3.6"
+services:
+  knowage:
+    image: knowagelabs/knowage-server-docker:latest
+    ports:
+      - "8020:8080"
+    environment:
+      - DB_USER_FILE=/run/secrets/knowage_db_user
+      - DB_PASS_FILE=/run/secrets/knowage_db_pass
+      - DB_DB_FILE=/run/secrets/knowage_db_db
+      - DB_HOST_FILE=/run/secrets/knowage_db_host
+      - DB_PORT_FILE=/run/secrets/knowage_db_port
+      - HMAC_KEY_FILE=/run/secrets/knowage_hmac_key
+      - PASSWORD_ENCRYPTION_SECRET_FILE=/run/secrets/knowage_password_encryption_secret_key
+
+networks:
+  default:
+     name: Laboratorio-network

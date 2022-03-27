@@ -1,0 +1,4 @@
+databases:
+- database_name: Trino
+  sqlalchemy_uri: trino://trino@trino:8080/hive/default
+  tables: []

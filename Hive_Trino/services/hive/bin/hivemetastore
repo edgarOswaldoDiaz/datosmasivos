@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+# init tables for hive metastore
+hive --service schemaTool -initSchema -dbType mysql --verbose | true
+
+# upgrade tables, if versions evolve
+hive --service schemaTool -upgradeSchema -dbType mysql --verbose | true
+
+# run metastore
+hive --service metastore
