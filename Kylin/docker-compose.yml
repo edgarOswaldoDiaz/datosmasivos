@@ -1,0 +1,40 @@
+# Componente Kylin
+version: "3.7"
+
+services:
+
+  kylin:
+    container_name: kylin
+    image: kylin:4.0
+    build:
+      context: services/kylin
+    #env_file:
+    #  - ./services/hive/hive.env
+    ports: 
+    #kylin UI
+      - 7070:7070
+    # Spark UI
+      - 8081:8080
+    # Spark job UI
+      - 4040:4040
+    #command: bash
+    depends_on: 
+      - database
+
+  database:
+    container_name: database
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    #restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes: 
+      - database_vol:/var/lib/mysql
+
+networks:
+  default:
+    driver: bridge
+    name: lagodedatosnetwork
+
+volumes:
+  database_vol:
