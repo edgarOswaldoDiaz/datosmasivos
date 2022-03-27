@@ -1,0 +1,15 @@
+# Componente Portainer 
+version: "3.6"
+services:
+  portainer:
+    container_name: Portainer
+    image: portainer/portainer-ce:2.11.1
+    ports:
+      - 9002:9000
+      - 8000:8000
+    volumes:
+       - /var/run/docker.sock:/var/run/docker.sock
+       - portainer_data:/data
+    restart: always
+volumes:
+    portainer_data:
