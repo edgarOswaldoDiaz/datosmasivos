@@ -1,0 +1,51 @@
+# componente Minio 
+version: "3.7"
+
+services:
+
+# Nota: Este servicio no tiene ningun volumen asociado es temporal 
+  minio:
+    container_name: minio
+    image: minio/minio:RELEASE.2021-06-07T21-40-51Z
+    ports:
+      - 9000:9000
+    volumes:
+      - minio_vol:/data
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    command: server /data
+
+# Genera los buckets `hive` and `default` para que permita el upload
+  mc:
+    container_name: mc-provision
+    image: minio/mc:RELEASE.2021-06-08T01-29-37Z
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5 && \
+        mc config host add super-puper-config http://minio:9000 minio minio123 && \
+        mc mb super-puper-config/hive && \
+        mc mb super-puper-config/default || exit 1;"
+    depends_on: 
+      - "minio"
+    
+  minio_console:
+    container_name: minio-console
+    image: minio/console:v0.9.2
+    depends_on: 
+      - "minio"
+    command: server
+    environment: 
+      CONSOLE_PBKDF_PASSPHRASE: "secret1"
+      CONSOLE_PBKDF_SALT: "secret2"
+      CONSOLE_MINIO_SERVER: "http://minio:9000"
+    ports: 
+      - 9090:9090
+
+networks:
+  default:
+    driver: bridge
+    name: lagodedatosnetwork
+
+volumes:
+  minio_vol:
