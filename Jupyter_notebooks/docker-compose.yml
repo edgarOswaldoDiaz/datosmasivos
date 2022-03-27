@@ -1,0 +1,13 @@
+version: "3.6"
+services:
+      Servicio_Jupyter:
+        image: "jupyter/datascience-notebook:latest"
+        environment:
+            - JUPYTER_ENABLE_LAB=${JUPYTER_ENABLE_LAB:-yes}
+            - GRANT_SUDO=yes
+        user: root
+        volumes:
+            - "./:/home/jovyan/datos"
+        ports:
+            - "8081:8888"
+        command: "start.sh jupyter lab --LabApp.token='Laboratorio'" # Comando para token
