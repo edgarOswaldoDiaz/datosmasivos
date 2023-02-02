@@ -1,2 +1,4 @@
-## Laboratorio datos masivos
-![image](https://user-images.githubusercontent.com/35883410/160265567-edf57e13-fc3a-478a-a499-3a6138c2f966.png)
+### Laboratorio datos masivos
+
+Estrategia para implementar una plataforma que permita la ingesta, almacenamiento, virtualización, procesamiento, visualización de grandes volumenes de información para su analítica o ciencia de datos.
+
