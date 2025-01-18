@@ -119,11 +119,11 @@ TravelLux, una agencia de viajes de lujo, utiliza Snowflake como su Data Warehou
 
 <img src="Estrategia_Empresarial.jpg">
 
-<img src="/assets/BPM.jpg">
+<img src="BPM.jpg">
 
-<img src="/assets/DevSecOps_and_DataSecOps.jpg">
+<img src="DevSecOps_and_DataSecOps.jpg">
 
-<img src="/assets/PaaS.jpg">
+<img src="PaaS.jpg">
 
 ___________
 
