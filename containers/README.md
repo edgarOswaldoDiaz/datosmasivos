@@ -1,5 +1,4 @@
 ### Tecnología para generar contenedores
-
 La **tecnología de contenedores** es una herramienta clave en el desarrollo y despliegue de software moderno, diseñada para facilitar la creación, empaquetado y distribución de aplicaciones y sus dependencias en entornos aislados y consistentes. Su adopción ha transformado la manera en que las organizaciones gestionan infraestructuras y despliegan aplicaciones a gran escala.
 
 #### **Definición y características principales**
@@ -12,7 +11,7 @@ Un contenedor es una unidad de software que empaqueta código y todas sus depend
 - **Escalabilidad:** Facilitan la replicación de servicios para manejar cargas de trabajo variables.
 
 #### **Componentes esenciales**
-- **Motor de contenedores:** Software que crea, ejecuta y gestiona contenedores (por ejemplo, Docker).
+- **Motor de contenedores:** Software que crea, ejecuta y gestiona contenedores (por ejemplo, Docker o Podman).
 - **Imagen de contenedor:** Un archivo que contiene todo el necesario para ejecutar la aplicación, incluyendo código, bibliotecas, herramientas y configuraciones.
 - **Registro de imágenes:** Repositorio donde se almacenan y distribuyen imágenes de contenedores, como Docker Hub o Amazon Elastic Container Registry (ECR).
 - **Orquestadores:** Herramientas para gestionar contenedores a gran escala en clústeres, como Kubernetes o Docker Swarm.
