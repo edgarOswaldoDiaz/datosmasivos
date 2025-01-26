@@ -1,78 +1,214 @@
-### Tecnología para generar contenedores
-La **tecnología de contenedores** es una herramienta clave en el desarrollo y despliegue de software moderno, diseñada para facilitar la creación, empaquetado y distribución de aplicaciones y sus dependencias en entornos aislados y consistentes. Su adopción ha transformado la manera en que las organizaciones gestionan infraestructuras y despliegan aplicaciones a gran escala.
+### **¿Qué son los hipervisores y los contenedores?**
 
-#### **Definición y características principales**
-Un contenedor es una unidad de software que empaqueta código y todas sus dependencias necesarias para que una aplicación pueda ejecutarse de manera uniforme en diferentes entornos. Se diferencia de las máquinas virtuales porque comparte el mismo sistema operativo base, lo que hace que sea más ligero y eficiente en recursos.
+**Hipervisores**:  
+   Los hipervisores son software o firmware que permiten crear y gestionar máquinas virtuales (VMs). Estas máquinas virtuales ejecutan sistemas operativos completos de manera aislada en un mismo hardware físico.  
+   Ejemplos: VMware, Hyper-V, Xen, KVM.
 
-**Características principales:**
-- **Ligereza:** Los contenedores suelen ocupar pocos megabytes, comparados con las máquinas virtuales, y arrancan casi instantáneamente.
-- **Portabilidad:** Pueden ejecutarse de manera consistente en cualquier lugar que soporte contenedores (por ejemplo, una laptop, un servidor, o la nube).
-- **Aislamiento:** Cada contenedor opera de forma independiente, lo que asegura que los cambios en uno no afecten a otros.
-- **Escalabilidad:** Facilitan la replicación de servicios para manejar cargas de trabajo variables.
+**Contenedores**:  
+   Los contenedores son una tecnología de virtualización a nivel de sistema operativo que permite ejecutar aplicaciones de manera aislada en entornos ligeros, compartiendo el kernel del sistema operativo base.  
+   Ejemplos: Docker, Kubernetes (para orquestación de contenedores).
 
-#### **Componentes esenciales**
-- **Motor de contenedores:** Software que crea, ejecuta y gestiona contenedores (por ejemplo, Docker o Podman).
-- **Imagen de contenedor:** Un archivo que contiene todo el necesario para ejecutar la aplicación, incluyendo código, bibliotecas, herramientas y configuraciones.
-- **Registro de imágenes:** Repositorio donde se almacenan y distribuyen imágenes de contenedores, como Docker Hub o Amazon Elastic Container Registry (ECR).
-- **Orquestadores:** Herramientas para gestionar contenedores a gran escala en clústeres, como Kubernetes o Docker Swarm.
+### **Tabla comparativa: Hipervisores vs Contenedores**
 
-#### **Ventajas de los contenedores**
-- **Consistencia en entornos de desarrollo y producción:** Elimina problemas de compatibilidad.
-- **Optimización de recursos:** Utilizan menos CPU y memoria que las máquinas virtuales.
-- **Facilidad de implementación continua (CI/CD):** Simplifican la integración y entrega continua de software.
-- **Compatibilidad con microservicios:** Soportan la arquitectura de microservicios, donde las aplicaciones se dividen en componentes pequeños e independientes.
+| **Aspecto**                 | **Hipervisores**                                              | **Contenedores**                                              |
+|-----------------------------|-------------------------------------------------------------|-------------------------------------------------------------|
+| **Nivel de virtualización**  | Virtualización a nivel de hardware (máquinas virtuales).     | Virtualización a nivel del sistema operativo.               |
+| **Aislamiento**              | Cada máquina virtual tiene su propio sistema operativo.      | Comparte el kernel del sistema operativo base.              |
+| **Peso**                     | Más pesados, requieren más recursos (RAM, CPU, almacenamiento). | Ligeros, consumen menos recursos gracias a la compartición del kernel. |
+| **Inicio**                   | Más lento, ya que implica arrancar un sistema operativo completo. | Muy rápido, ya que los contenedores arrancan solo la aplicación. |
+| **Flexibilidad de SO**       | Permite ejecutar diferentes sistemas operativos (Windows, Linux, etc.). | Limitado al sistema operativo del host.                    |
+| **Casos de uso principales** | Entornos que requieren virtualización completa y fuerte aislamiento. | Microservicios, despliegue rápido y escalabilidad ligera.   |
+| **Seguridad**                | Más seguro debido al aislamiento completo de hardware.        | Menos seguro, ya que los contenedores comparten el kernel.  |
+| **Gestión**                  | Más compleja, requiere gestión de sistemas operativos independientes. | Más sencilla, ya que solo se gestionan las aplicaciones.    |
+| **Escalabilidad**            | Menos escalable, debido al alto consumo de recursos.          | Altamente escalable, ideal para entornos dinámicos.         |
 
-#### **Herramientas populares**
-- **Docker:** Plataforma pionera que popularizó el uso de contenedores.
-- **Kubernetes:** Sistema de orquestación de contenedores, ampliamente utilizado para gestionar aplicaciones distribuidas.
-- **Podman:** Alternativa a Docker, que no requiere un demonio central.
-- **OpenShift:** Plataforma empresarial basada en Kubernetes.
+### **¿Cuándo usar cada uno?**
 
-_________________________________
+| **Escenario**                                          | **Hipervisores**                                                | **Contenedores**                                              |
+|-------------------------------------------------------|---------------------------------------------------------------|-------------------------------------------------------------|
+| Necesitas ejecutar diferentes sistemas operativos.     | ✅ Ideal, ya que permite ejecutar múltiples sistemas operativos. | ❌ No es posible, los contenedores comparten el mismo kernel. |
+| Recursos de hardware limitados.                       | ❌ Requiere más recursos.                                       | ✅ Mejor opción por su ligereza.                            |
+| Aislamiento de seguridad completo.                    | ✅ Ofrecen mayor aislamiento entre sistemas.                   | ❌ Menor aislamiento, ya que comparten el kernel.           |
+| Despliegue rápido y continuo (DevOps).                | ❌ Más lento en iniciar y menos eficiente en este caso.         | ✅ Perfecto, despliegue y escalabilidad rápidos.            |
+| Ambiente de pruebas o desarrollo de software.         | ✅ Para simular diferentes sistemas operativos.                | ✅ Para ejecutar aplicaciones individuales en entornos consistentes. |
+| Orquestación de microservicios.                       | ❌ No es eficiente ni diseñado para este propósito.             | ✅ Diseñado para aplicaciones distribuidas y escalables.    |
+| Infraestructura de nube híbrida o multi-nube.         | ✅ Adecuado para VM en infraestructura distribuida.            | ✅ Ideal para aplicaciones portátiles y ligeras.            |
 
-### **Instalación en sistema operativo Ms. Windows 11:**
+### **Pasos para instalar Podman Desktop**
 
-**Requisitos previos:**
+#### **1. Verificar los requisitos previos**
+Antes de instalar, asegúrate de que tu sistema cumpla con los siguientes requisitos:
+- **Sistema Operativo**: Windows, macOS o Linux (Distribuciones basadas en Debian, Red Hat, etc.).
+- **Recursos mínimos**:
+  - Procesador moderno compatible con virtualización.
+  - Al menos 2 GB de RAM.
+- **Permisos de administrador/root**: Necesarios para completar la instalación.
 
-  * **Windows 11:** Asegúrate de tener instalado Windows 11 con la versión 19043 o superior.
-  * **WSL 2 (Windows Subsystem for Linux 2):** Debe estar habilitado. Puedes seguir esta guía oficial para habilitarlo: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://www.google.com/url?sa=E&source=gmail&q=https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-  * **6 GB de RAM:** Se recomienda tener al menos 6 GB de RAM para el funcionamiento óptimo de la máquina Podman.
+#### **2. Descargar Podman Desktop**
+**Accede al sitio oficial** de Podman Desktop:  
+   [https://podman.io](https://podman.io).
+   
+En a la sección de descargas y selecciona tu sistema operativo:
+   - **Windows**: Descarga el archivo `.exe`.
+   - **macOS**: Descarga el archivo `.dmg`.
+   - **Linux**: Sigue las instrucciones según tu distribución.
 
-**Pasos:**
+#### **3. Instalación según el sistema operativo**
 
-1.  **Descarga el instalador:** Visita la página oficial de Podman Desktop y descarga el instalador para Windows: [https://podman-desktop.io/docs/installation/windows-install](https://podman-desktop.io/docs/installation/windows-install)
-2.  **Ejecuta el instalador:** Una vez descargado, ejecuta el archivo .exe y sigue las instrucciones del asistente de instalación.
-3.  **Configuración inicial:**
-      * **Máquina:** Podman Desktop utilizará WSL 2 como proveedor de máquinas.
-      * **Otros ajustes:** Puedes personalizar otras opciones según tus necesidades, como la ubicación de los archivos de configuración.
-4.  **Verifica la instalación:** Una vez completada la instalación, inicia Podman Desktop. Deberías ver la interfaz principal donde podrás crear y gestionar contenedores.
+##### **Windows**
+Ejecutar el archivo descargado (`Podman-Desktop-Installer.exe`).
+Siguir las instrucciones del asistente de instalación:
+   - Acepta los términos de uso.
+   - Elige una ruta de instalación (o usa la predeterminada).
+Finalizar la instalación y reinicia el sistema si es necesario.
 
-### **Instalación en sistema operativo Ubuntu Linux:**
+##### **macOS**
+Abrir el archivo `.dmg` descargado.
+Arrastrar el icono de **Podman Desktop** a la carpeta **Aplicaciones**.
+Abrir la aplicación desde **Launchpad** y sigue las configuraciones iniciales.
 
-**Requisitos previos:**
+##### **Linux**
+El proceso varía según tu distribución. Aquí tienes ejemplos para las más comunes:
 
-  * **Ubuntu:** Asegúrate de tener instalada una versión compatible de Ubuntu.
-  * **Permisos de root:** Necesitarás permisos de root para instalar Podman.
+- **Ubuntu/Debian**:
+  ```bash
+  sudo apt update
+  wget https://github.com/containers/podman-desktop/releases/latest/download/podman-desktop-linux.deb
+  sudo apt install ./podman-desktop-linux.deb
+  ```
 
-**Pasos:**
+- **Fedora/Red Hat**:
+  ```bash
+  sudo dnf install https://github.com/containers/podman-desktop/releases/latest/download/podman-desktop-linux.rpm
+  ```
 
-1.  **Actualiza los repositorios:**
-    ```bash
-    sudo apt update
-    ```
-2.  **Instala Podman:**
-    ```bash
-    sudo apt install podman
-    ```
-3.  **Instala Podman Desktop (opcional):**
-    Si deseas utilizar la interfaz gráfica de Podman Desktop, puedes instalarla desde el repositorio oficial o a través de un paquete .deb. Consulta la documentación oficial de Podman Desktop para obtener instrucciones específicas.
+#### **4. Configuración inicial**
+Abrir Podman Desktop.
+Si es la primera vez en utilizar Podman, seleccionar o instalar un backend:
+   - **Linux**: Podman ya estará configurado de forma nativa.
+   - **Windows/macOS**: Es posible que necesites instalar **WSL 2** (Windows) o configurar un entorno de virtualización como Lima (macOS).
+Configurar los recursos (CPU, RAM, almacenamiento) según sea necesario.
 
-**Consideraciones adicionales:**
-  * **Rootless mode:** Podman puede ejecutarse en modo rootless, lo que proporciona mayor seguridad. Consulta la documentación oficial para obtener más información sobre cómo habilitarlo.
-  * **Configuración:** Podman ofrece muchas opciones de configuración. Puedes personalizar el comportamiento de Podman editando los archivos de configuración.
-  * **Uso:** Una vez instalado, puedes utilizar Podman para crear, iniciar, detener y eliminar contenedores, así como gestionar imágenes de contenedores.
+#### **5. Probar la instalación**
+Abrir Podman Desktop y crea un contenedor de prueba:
+   - Desde la interfaz gráfica, selecciona **New Container**.
+   - Elige una imagen base como `nginx` o `alpine`.
+Verificar que el contenedor se esté ejecutando correctamente:
+   - Puedes acceder al log desde Podman Desktop.
+   - Accede al contenedor si es un servidor web, por ejemplo, en el navegador.
 
-**Recursos adicionales:**
-  * **Documentación oficial de Podman Desktop:** [https://podman-desktop.io/docs/](https://podman-desktop.io/docs/)
+______________
+
+### ¿Qué es YAML?  
+YAML (YAML Ain't Markup Language) es un formato de serialización de datos diseñado para ser legible por humanos. Es ampliamente utilizado para definir configuraciones debido a su simplicidad y claridad. YAML utiliza una estructura basada en sangrías y no requiere llaves ni corchetes como otros formatos como JSON o XML.
+
+### Sintaxis de YAML  
+- **Estructura jerárquica**: Se organiza por niveles de sangría.
+- **Claves y valores**: Las claves se separan de los valores mediante `:`.
+- **Listas**: Se definen usando guiones (`-`).
+- **Comentarios**: Se escriben con `#`.
+- **Bloques literales**: Los valores multilinea se definen con `|` o `>`.
+
+Ejemplo básico:
+```yaml
+persona:
+  nombre: "Oswaldo"
+  edad: 50
+  habilidades:
+    - ciberseguridad
+    - provacidad de datos
+    - normatividad en TICs
+  contacto:
+    correo: oswaldo.diaz@inegi.org.mx
+    teléfono: "+52 449 910 53 00"
+```
+
+### Uso de YAML en el contexto de contenerización  
+En el ámbito de la contenerización, YAML se utiliza ampliamente para describir configuraciones en herramientas como Docker Compose y Podman Compose. Estas herramientas permiten definir múltiples servicios en un solo archivo, facilitando la orquestación de contenedores.
+
+#### Ejemplo con Docker Compose  
+Archivo `docker-compose.yml` para levantar una aplicación web y una base de datos:  
+```yaml
+version: '3.8'
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+```
+
+**Versión**: Define la versión del esquema YAML para Docker Compose. En este caso, `3.8`.
+**Servicios**: Agrupa los contenedores que se usarán:
+   - `web`: Define un servicio que usa la imagen de NGINX y mapea el puerto 8080 en el host al 80 en el contenedor.
+   - `db`: Configura una base de datos PostgreSQL con variables de entorno para el usuario, contraseña y base de datos.
+**Volúmenes**: Crea un volumen persistente para almacenar los datos de PostgreSQL.
+
+#### Ejemplo con Podman Compose  
+Podman Compose usa un archivo similar al de Docker Compose. Para el mismo caso:
+```yaml
+version: '3.8'
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+```
+
+La sintaxis es idéntica porque Podman Compose busca ser compatible con Docker Compose. Ambos generan y gestionan contenedores usando el mismo estándar YAML.
+
+
+### **Referencias bibliográficas**
+
+> Red Hat. (2023). What is Podman?. Red Hat. Recuperado de https://www.redhat.com/en/topics/containers/what-is-podman
+
+> Podman.io. (2023). Podman Desktop Documentation. Recuperado de https://podman.io/getting-started/installation
+
+> Graba, J. (2022). Managing containers with Podman: A step-by-step guide for developers and sysadmins. TechPress.
+
+> Jain, R. (2021). Containerization with Podman and Docker: A practical guide to modern container technologies. Springer.
+
+> IBM Cloud. (2023). Podman vs Docker: Key differences explained. IBM Knowledge Center. Recuperado de https://www.ibm.com/cloud/blog/podman-vs-docker
+
+> Docker Inc. (2023). *Overview of Docker Compose*. Recuperado de https://docs.docker.com/compose/
+
+> Podman Team. (2023). *Podman Compose User Guide*. Recuperado de https://podman.io/
+
+> Ben-Kiki, O., Evans, C., & döt Net, I. (2009). *YAML Ain't Markup Language (YAML™) Version 1.2*. Recuperado de https://yaml.org/spec/1.2/spec.html
+
+> Turnbull, J. (2018). *The Docker Book: Containerization is the New Virtualization*. Independently Published.
+
+> Kelsey, C. (2020). *Programming Containers: Understanding Docker and YAML for Orchestration*. O'Reilly Media.
 _____________________________
 > By CISO oswaldo.diaz@inegi.org.mx
