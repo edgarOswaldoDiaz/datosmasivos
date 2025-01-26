@@ -3,12 +3,10 @@
 <img src="Capas_computadora.jpg">
 <img src="contenedores.jpg">
 
-**Hipervisores**:  
-   Los hipervisores son software o firmware que permiten crear y gestionar máquinas virtuales (VMs). Estas máquinas virtuales ejecutan sistemas operativos completos de manera aislada en un mismo hardware físico.  
+**Hipervisores**: Los hipervisores son software o firmware que permiten crear y gestionar máquinas virtuales (VMs). Estas máquinas virtuales ejecutan sistemas operativos completos de manera aislada en un mismo hardware físico.  
    Ejemplos: VMware, Hyper-V, Xen, KVM.
 
-**Contenedores**:  
-   Los contenedores son una tecnología de virtualización a nivel de sistema operativo que permite ejecutar aplicaciones de manera aislada en entornos ligeros, compartiendo el kernel del sistema operativo base.  
+**Contenedores**: Los contenedores son una tecnología de virtualización a nivel de sistema operativo que permite ejecutar aplicaciones de manera aislada en entornos ligeros, compartiendo el kernel del sistema operativo base.  
    Ejemplos: Docker, Kubernetes (para orquestación de contenedores).
 
 ### **Tabla comparativa: Hipervisores vs Contenedores**
