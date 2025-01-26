@@ -124,6 +124,23 @@ TravelLux, una agencia de viajes de lujo, utiliza Snowflake como su Data Warehou
 
 <img src="/assets/DevSecOps_and_DataSecOps.jpg">
 
+| **Aspecto**                | **DevSecOps**                                                                 | **DataSecOps**                                                                 |
+|----------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| **Definición**             | Es un enfoque que integra la seguridad (Security) en el ciclo de vida de desarrollo de software (DevOps). | Es un enfoque que integra la seguridad (Security) en el ciclo de vida de la gestión de datos. |
+| **Enfoque principal**      | Garantizar que las aplicaciones y sistemas desarrollados sean seguros desde su diseño hasta su implementación. | Proteger la seguridad, privacidad y gobernanza de los datos a lo largo de todo su ciclo de vida. |
+| **Objetivo**               | Mitigar vulnerabilidades en el código, la infraestructura y los procesos de desarrollo. | Garantizar la protección de los datos contra accesos no autorizados, pérdidas o brechas. |
+| **Componentes clave**      | Desarrollo de software seguro, pruebas de seguridad automatizadas, auditorías de código. | Gobernanza de datos, cifrado, control de acceso basado en roles, monitoreo de uso de datos. |
+| **Ámbito de aplicación**   | Aplicaciones, sistemas y servicios de software en todas las etapas de desarrollo e implementación. | Bases de datos, flujos de datos, almacenamiento y análisis de datos. |
+| **Herramientas comunes**   | - SAST (Static Application Security Testing) <br> - DAST (Dynamic Application Security Testing) <br> - Controles CI/CD seguros (ej., Jenkins, GitHub Actions). | - Sistemas de clasificación y etiquetado de datos <br> - Herramientas de monitoreo de datos (ej., DataDog, Splunk) <br> - Plataformas de privacidad de datos (ej., Privacera, Immuta). |
+| **Proceso de integración** | La seguridad se incluye como una parte integral de DevOps, involucrando equipos de desarrollo, operaciones y seguridad. | La seguridad de los datos se alinea con los flujos de trabajo de datos, involucrando equipos de analistas, ingenieros de datos y especialistas en gobernanza. |
+| **Beneficiarios principales** | Usuarios de software, equipos de desarrollo y organizaciones que buscan minimizar riesgos en aplicaciones y servicios. | Usuarios finales, analistas de datos, organizaciones que manejan datos sensibles o regulados. |
+| **Riesgos mitigados**      | Vulnerabilidades de software, ataques de inyección, configuraciones erróneas en infraestructura. | Filtración de datos, accesos no autorizados, cumplimiento de regulaciones como GDPR, HIPAA o CCPA. |
+| **Ejemplo de implementación** | Integrar pruebas de seguridad automatizadas en una tubería CI/CD para identificar problemas de seguridad antes de la producción. | Aplicar políticas de gobernanza para el acceso a datos sensibles y el uso de técnicas de anonimización o pseudonimización. |
+
+### Diferencia clave:
+- **DevSecOps** se centra en la **seguridad del software y sistemas** en el ciclo de desarrollo y operación.
+- **DataSecOps** se enfoca en la **seguridad y gobernanza de los datos** a lo largo de su ciclo de vida. 
+_______
 <img src="/assets/PaaS.jpg">
 
 ___________
