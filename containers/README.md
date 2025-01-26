@@ -1,5 +1,10 @@
 ### **¿Qué son los hipervisores y los contenedores?**
 
+<img src=".jpg">
+
+
+
+
 **Hipervisores**:  
    Los hipervisores son software o firmware que permiten crear y gestionar máquinas virtuales (VMs). Estas máquinas virtuales ejecutan sistemas operativos completos de manera aislada en un mismo hardware físico.  
    Ejemplos: VMware, Hyper-V, Xen, KVM.
