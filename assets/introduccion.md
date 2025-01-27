@@ -140,10 +140,30 @@ TravelLux, una agencia de viajes de lujo, utiliza Snowflake como su Data Warehou
 ### Diferencia clave:
 - **DevSecOps** se centra en la **seguridad del software y sistemas** en el ciclo de desarrollo y operación.
 - **DataSecOps** se enfoca en la **seguridad y gobernanza de los datos** a lo largo de su ciclo de vida. 
-_______
-<img src="/assets/PaaS.jpg">
 
-___________
+### **Tabla de Funciones y Actividades de los Roles DataSecOps y DevSecOps**
+
+| **Aspecto**              | **DevSecOps**                                                                 | **DataSecOps**                                                                 |
+|--------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| **Propósito principal**  | Integrar la seguridad en todas las etapas del ciclo de desarrollo de software y operaciones. | Garantizar la seguridad, privacidad y gobernanza de los datos durante todo su ciclo de vida. |
+| **Enfoque**              | Seguridad en aplicaciones, infraestructura y procesos de desarrollo.          | Seguridad y control en el acceso, procesamiento, almacenamiento y uso de datos. |
+| **Funciones principales**|                                                                              |                                                                              |
+| **1. Planificación**     | - Evaluar riesgos en sistemas y aplicaciones desde el diseño.                 | - Identificar riesgos relacionados con los datos y definir políticas de gobernanza. |
+| **2. Desarrollo**        | - Implementar prácticas de desarrollo seguro (secure coding).                 | - Diseñar flujos de datos con protección para datos sensibles. |
+| **3. Automatización**    | - Configurar herramientas CI/CD con controles de seguridad integrados.        | - Automatizar la clasificación, etiquetado y monitoreo de datos. |
+| **4. Auditoría y monitoreo** | - Monitorear vulnerabilidades en infraestructura y software en tiempo real. | - Supervisar accesos a datos y asegurar el cumplimiento de normativas. |
+| **5. Gestión de incidentes** | - Responder a brechas de seguridad en software o infraestructura.           | - Gestionar brechas de seguridad en datos y asegurar la notificación a las autoridades cuando sea necesario. |
+| **6. Cumplimiento**      | - Garantizar que las aplicaciones cumplan con estándares como OWASP, ISO/IEC 27001. | - Asegurar el cumplimiento de normativas como GDPR, HIPAA, CCPA, etc. |
+| **Actividades clave**    |                                                                              |                                                                              |
+| **1. Seguridad proactiva** | - Revisar código fuente con herramientas de análisis estático (SAST).        | - Identificar datos sensibles y aplicar medidas como cifrado o anonimización. |
+| **2. Integración de seguridad** | - Automatizar pruebas de seguridad en pipelines CI/CD.                  | - Integrar controles de seguridad en sistemas de análisis y almacenamiento de datos. |
+| **3. Colaboración**       | - Trabajar con equipos de desarrollo y operaciones para abordar vulnerabilidades. | - Colaborar con ingenieros de datos y analistas para implementar políticas de gobernanza. |
+| **4. Capacitación**       | - Entrenar a los desarrolladores en prácticas seguras de programación.        | - Capacitar al personal sobre el manejo de datos y su protección. |
+| **Roles involucrados**    | - Ingenieros de DevSecOps <br> - Desarrolladores <br> - Administradores de sistemas <br> - Analistas de seguridad. | - Ingenieros de datos <br> - Especialistas en gobernanza de datos <br> - Científicos de datos <br> - Oficiales de privacidad. |
+| **Herramientas comunes**  | - SAST, DAST, IAST (e.g., SonarQube, Checkmarx). <br> - Plataformas CI/CD seguras (e.g., Jenkins, GitHub Actions). <br> - Sistemas de monitoreo (e.g., ELK, Prometheus). | - Herramientas de gobernanza (e.g., Alation, Collibra). <br> - Sistemas de monitoreo y privacidad (e.g., DataDog, Splunk). <br> - Técnicas de cifrado y anonimización (e.g., AES, Differential Privacy). |
+_________
+<img src="/assets/PaaS.jpg">
+_________
 
 Referencias arbitradas:
 
