@@ -1,4 +1,5 @@
-### Roles clave para DevSecOps y DataSecOps
+
+<img src="/assets/DevSecOps_and_DataSecOps.jpg">
 
 ### **Roles en DevSecOps**
 
