@@ -1,4 +1,5 @@
 # Plataforma como servicio (PaaS)
+<img src="/assets/PaaS.jpg">
 
 ## Descripción de los componentes
 
