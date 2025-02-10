@@ -4,7 +4,8 @@ Estrategia para implementar una plataforma que permita la ingesta, almacenamient
 
 Indice Temático
 
-- [Introducción](assets/introduccion.md) | ([Test](assets/test.md)) | ([Roles](assets/Roles.md)) | ([PaaS](assets/PaaS.md))
+- [Introducción](assets/introduccion.md)
+- Recursos --> | ([Test](assets/test.md)) | ([Roles](assets/Roles.md)) | ([PaaS](assets/PaaS.md)) | ([Plantilla compromiso ético](assets/Plantilla_compromiso_etico.md))
 - [Ciberseguridad - riesgos.](assets/ciberseguridaddatosmasivos.md)
 - [La revolución de los datos masivos.](assets/revoluciondatosmasivos.md)
 - Infraestructura de los datos masivos.
