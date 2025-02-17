@@ -8,7 +8,7 @@ Indice Temático
 - Recursos --> | [Test](assets/test.md) | [Roles](assets/Roles.md) | [PaaS](assets/PaaS.md) | [Plantilla compromiso ético](assets/Plantilla_compromiso_etico.md)
 - [Ciberseguridad - riesgos.](assets/ciberseguridaddatosmasivos.md)
 - [La revolución de los datos masivos.](assets/revoluciondatosmasivos.md)
-- Infraestructura de los datos masivos --> | [Cómputo en la nube](assets/computoenlanube.md)
+- Infraestructura de los datos masivos --> | [Nube](assets/computoenlanube.md) | [IoT](assets/IoT.md)
 - Análisis de datos masivos.
 - Gráficos y representación de datos masivos.
 - Nuevas tendencias tecnológicas y sociales de datos masivos.
