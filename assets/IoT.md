@@ -1,7 +1,7 @@
-**Internet de las Cosas (IoT) en el Contexto de Datos Masivos**  
-
 # Framework IoT
-<img src="/assets/">
+<img src="/assets/Arquitectura_IoT_Mobile.jpg">
+
+**Internet de las Cosas (IoT) en el Contexto de Datos Masivos**  
 
 El Internet de las Cosas (IoT, por sus siglas en inglés) es un paradigma tecnológico que permite la interconexión de dispositivos físicos a través de redes digitales, facilitando la recolección, transmisión y procesamiento de grandes volúmenes de datos en tiempo real. En el contexto de la materia *Datos Masivos*, el IoT representa una de las principales fuentes de generación de datos a gran escala, con aplicaciones en sectores como la salud, la industria, la agricultura, el transporte y las ciudades inteligentes.  
 
