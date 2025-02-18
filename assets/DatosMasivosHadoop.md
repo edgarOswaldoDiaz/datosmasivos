@@ -191,5 +191,233 @@ networks:
 - **Volúmenes**: Se crean volúmenes para persistir los datos de los nodos namenode y datanodes, de modo que no se pierdan al detener o eliminar los contenedores.
 - **Redes**: Se crea una red llamada hadoop-network para que los contenedores puedan comunicarse entre sí. Se asignan alias a los contenedores para facilitar la comunicación entre ellos.
 - **Dependencias**: Se definen las dependencias entre los servicios. Por ejemplo, los datanodes dependen del namenode y el resourcemanager depende de los datanodes y del namenode.
+
+Como Implementar el ecosistema de Hadoop en una máquina virtual con Ubuntu 24.04 es un proceso que requiere varios pasos. A continuación, te proporciono un manual detallado para configurar Hadoop en un entorno de una sola máquina (modo pseudo-distribuido). Este modo es ideal para pruebas y aprendizaje.
+
+### Requisitos Previos
+
+1. **Máquina Virtual**: Asegúrate de tener una máquina virtual con Ubuntu 24.04 instalado.
+2. **Java Development Kit (JDK)**: Hadoop requiere Java. Instala JDK 8 o superior.
+3. **SSH**: Hadoop utiliza SSH para la comunicación entre nodos.
+4. **Hadoop**: Descarga la versión estable de Hadoop.
+
+### Paso 1: Actualizar el Sistema
+
+Primero, asegúrate de que tu sistema esté actualizado.
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+### Paso 2: Instalar JDK
+
+Hadoop requiere Java. Instala JDK 8 o superior.
+
+```bash
+sudo apt install openjdk-11-jdk -y
+```
+
+Verifica la instalación:
+
+```bash
+java -version
+```
+
+### Paso 3: Configurar SSH
+
+Hadoop utiliza SSH para la comunicación entre nodos. Instala SSH y genera claves SSH.
+
+```bash
+sudo apt install openssh-server openssh-client -y
+```
+
+Genera claves SSH:
+
+```bash
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+```
+
+Prueba la conexión SSH:
+
+```bash
+ssh localhost
+```
+
+Si todo está bien, deberías poder conectarte sin contraseña.
+
+### Paso 4: Descargar e Instalar Hadoop
+
+Descarga Hadoop desde el sitio oficial. En este ejemplo, usaremos Hadoop 3.3.1.
+
+```bash
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
+```
+
+Extrae el archivo descargado:
+
+```bash
+tar -xzvf hadoop-3.3.1.tar.gz
+```
+
+Mueve la carpeta extraída a un directorio adecuado:
+
+```bash
+sudo mv hadoop-3.3.1 /usr/local/hadoop
+```
+
+### Paso 5: Configurar Variables de Entorno
+
+Añade las siguientes líneas al archivo `~/.bashrc`:
+
+```bash
+export HADOOP_HOME=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+```
+
+Recarga el archivo `~/.bashrc`:
+
+```bash
+source ~/.bashrc
+```
+
+### Paso 6: Configurar Hadoop
+
+Edita los archivos de configuración de Hadoop.
+
+1. **hadoop-env.sh**:
+
+   Abre el archivo `$HADOOP_HOME/etc/hadoop/hadoop-env.sh` y añade la siguiente línea:
+
+   ```bash
+   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+   ```
+
+2. **core-site.xml**:
+
+   Edita el archivo `$HADOOP_HOME/etc/hadoop/core-site.xml` y añade la siguiente configuración:
+
+   ```xml
+   <configuration>
+       <property>
+           <name>fs.defaultFS</name>
+           <value>hdfs://localhost:9000</value>
+       </property>
+   </configuration>
+   ```
+
+3. **hdfs-site.xml**:
+
+   Edita el archivo `$HADOOP_HOME/etc/hadoop/hdfs-site.xml` y añade la siguiente configuración:
+
+   ```xml
+   <configuration>
+       <property>
+           <name>dfs.replication</name>
+           <value>1</value>
+       </property>
+       <property>
+           <name>dfs.namenode.name.dir</name>
+           <value>/usr/local/hadoop/data/namenode</value>
+       </property>
+       <property>
+           <name>dfs.datanode.data.dir</name>
+           <value>/usr/local/hadoop/data/datanode</value>
+       </property>
+   </configuration>
+   ```
+
+4. **mapred-site.xml**:
+
+   Edita el archivo `$HADOOP_HOME/etc/hadoop/mapred-site.xml` y añade la siguiente configuración:
+
+   ```xml
+   <configuration>
+       <property>
+           <name>mapreduce.framework.name</name>
+           <value>yarn</value>
+       </property>
+   </configuration>
+   ```
+
+5. **yarn-site.xml**:
+
+   Edita el archivo `$HADOOP_HOME/etc/hadoop/yarn-site.xml` y añade la siguiente configuración:
+
+   ```xml
+   <configuration>
+       <property>
+           <name>yarn.nodemanager.aux-services</name>
+           <value>mapreduce_shuffle</value>
+       </property>
+   </configuration>
+   ```
+
+### Paso 7: Formatear el Sistema de Archivos HDFS
+
+Antes de iniciar Hadoop, necesitas formatear el sistema de archivos HDFS.
+
+```bash
+hdfs namenode -format
+```
+
+### Paso 8: Iniciar Hadoop
+
+Inicia los servicios de Hadoop:
+
+```bash
+start-dfs.sh
+start-yarn.sh
+```
+
+Verifica que todos los servicios estén corriendo:
+
+```bash
+jps
+```
+
+Deberías ver algo similar a esto:
+
+```
+NameNode
+DataNode
+ResourceManager
+NodeManager
+SecondaryNameNode
+```
+
+### Paso 9: Acceder a la Interfaz Web de Hadoop
+
+Puedes acceder a la interfaz web de Hadoop para monitorear el estado del cluster.
+
+- **NameNode**: `http://localhost:9870`
+- **ResourceManager**: `http://localhost:8088`
+
+### Paso 10: Ejecutar un Job de Prueba
+
+Para verificar que todo está funcionando correctamente, puedes ejecutar un job de prueba.
+
+```bash
+hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar pi 2 5
+```
+
+Este comando calculará el valor de Pi utilizando MapReduce.
+
+### Paso 11: Detener Hadoop
+
+Cuando hayas terminado, puedes detener los servicios de Hadoop:
+
+```bash
+stop-dfs.sh
+stop-yarn.sh
+```
 ________________________
 > By CISO oswaldo.diaz@inegi.org.mx 
