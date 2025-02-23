@@ -18,3 +18,10 @@ services:
       - '$GITLAB_HOME/logs:/var/log/gitlab'
       - '$GITLAB_HOME/data:/var/opt/gitlab'
     shm_size: '256m'
+
+# Reemplazar los marcadores de posición:
+# gitlab.example.com con el nombre de dominio para acceder.
+# https://gitlab.example.com con la URL externa.
+# $GITLAB_HOME con la ruta a un directorio del host local.
+# Crea el directorio $GITLAB_HOME:
+# mkdir -p $GITLAB_HOME/config $GITLAB_HOME/logs $GITLAB_HOME/data
