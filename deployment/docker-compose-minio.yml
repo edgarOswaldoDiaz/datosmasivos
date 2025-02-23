@@ -1,0 +1,18 @@
+# Servicio local de Minio 
+version: '3.8'
+
+services:
+  minio:
+    image: minio/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_ROOT_USER: "tu_usuario"
+      MINIO_ROOT_PASSWORD: "tu_contraseña"
+    command: server /data --console-address ":9001"
+
+volumes:
+  minio_data:
