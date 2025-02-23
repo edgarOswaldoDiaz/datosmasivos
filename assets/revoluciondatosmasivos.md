@@ -49,6 +49,31 @@ Los gráficos generados a partir de estos análisis ofrecen representaciones cla
 
 El impacto de estas capacidades es evidente en sectores como el comercio minorista, donde los dashboards de BI han revolucionado la gestión de inventarios y las estrategias de marketing. En el sector financiero, el uso de análisis predictivo mediante modelos de aprendizaje automático ayuda a prevenir fraudes y evaluar riesgos crediticios con una precisión sin precedentes.
 
+Tabla que describe las características de las herramientas de software basadas en Python utilizadas para procesos de datos masivos, diferenciando entre Business Intelligence (BI), Business Analytics (BA), Data Science (DS) e Inteligencia Artificial (AI):
+
+| **Característica**            | **Business Intelligence (BI)**                                                                 | **Business Analytics (BA)**                                                                 | **Data Science (DS)**                                                                 | **Inteligencia Artificial (AI)**                                                     |
+|-------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| **Enfoque Principal**         | Análisis de datos históricos para la toma de decisiones.                                       | Análisis predictivo y prescriptivo para mejorar decisiones futuras.                        | Extracción de insights y patrones de datos complejos.                                | Creación de modelos que imitan el aprendizaje humano y la toma de decisiones.         |
+| **Herramientas Comunes**      | Pandas, Matplotlib, Seaborn, Tableau (integración con Python).                                | Scikit-learn, Statsmodels, Pandas, NumPy.                                                 | Jupyter Notebooks, Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch.                 | TensorFlow, PyTorch, Keras, OpenCV, NLTK, spaCy.                                     |
+| **Tipo de Datos**              | Datos estructurados y semi-estructurados.                                                     | Datos estructurados y semi-estructurados.                                                 | Datos estructurados, no estructurados y semi-estructurados.                          | Datos estructurados y no estructurados (imágenes, texto, audio, etc.).                |
+| **Procesamiento**              | ETL (Extract, Transform, Load) y visualización de datos.                                      | Análisis estadístico y modelado predictivo.                                               | Limpieza, transformación, modelado y visualización de datos.                         | Entrenamiento de modelos de aprendizaje automático y profundo.                        |
+| **Visualización**              | Gráficos estáticos e interactivos para informes y dashboards.                                 | Gráficos para análisis exploratorio y presentación de resultados.                         | Visualización avanzada para exploración y comunicación de insights.                  | Visualización de resultados de modelos (ej: mapas de calor, gráficos de precisión).   |
+| **Técnicas Utilizadas**        | Agregación, filtrado, y reportes.                                                             | Regresión, clasificación, series temporales.                                              | Machine Learning, estadística avanzada, minería de datos.                            | Redes neuronales, procesamiento de lenguaje natural, visión por computadora.          |
+| **Objetivo**                   | Apoyar la toma de decisiones basadas en datos históricos.                                      | Mejorar decisiones futuras mediante análisis predictivo.                                   | Descubrir patrones y generar insights a partir de datos.                             | Automatizar tareas y crear sistemas inteligentes.                                     |
+| **Ejemplos de Uso**            | Reportes de ventas, dashboards de rendimiento.                                                | Predicción de tendencias, optimización de recursos.                                        | Análisis de sentimientos, detección de fraudes.                                      | Chatbots, reconocimiento facial, vehículos autónomos.                                 |
+| **Integración con Big Data**   | Uso de herramientas como Apache Spark (PySpark) para procesamiento de grandes volúmenes.      | Uso de Spark MLlib para análisis predictivo a gran escala.                                 | Uso de Spark, Hadoop, y Dask para manejo de datos masivos.                           | Uso de frameworks distribuidos como TensorFlow Extended (TFX) para entrenamiento.     |
+| **Lenguajes Adicionales**      | SQL, R (en algunos casos).                                                                    | R, SQL.                                                                                   | R, SQL, Scala.                                                                       | C++, Java (para optimización de modelos).                                             |
+
+### Notas:
+- **BI**: Se centra en la visualización y reportes para decisiones operativas.
+- **BA**: Va más allá del BI, incorporando análisis predictivo y prescriptivo.
+- **DS**: Combina estadística, programación y conocimiento del dominio para extraer insights.
+- **AI**: Enfocada en la creación de sistemas autónomos o semi-autónomos que aprenden de los datos.
+
+Estas herramientas y enfoques pueden solaparse en algunos casos, pero cada uno tiene un propósito y técnicas específicas que los diferencian.
+
+
+
 ______
 
 Referencia arbitrada 
