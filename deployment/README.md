@@ -4,7 +4,7 @@
 
 - **Acceso a datos (autenticación y autorización)**: [Apache Ranger](https://ranger.apache.org/), [Keycloak](https://www.keycloak.org/), [Apache Atlas](https://atlas.apache.org/#/), [OpenMetadata](https://open-metadata.org/), entre otras.
 
-- **Extracción, validación, carga de datos**: [Apache NiFi](https://nifi.apache.org/), [Apache Kafka](https://kafka.apache.org/), [Apache Spark](https://spark.apache.org/), [Apaches Dask](https://docs.dask.org/en/stable/), entre otras.
+- **Extracción, validación, carga de datos**: [Apache NiFi](https://nifi.apache.org/), [Apache Kafka](https://kafka.apache.org/), [Apache Spark](https://spark.apache.org/), [Apache Dask](https://docs.dask.org/en/stable/), entre otras.
 
 - **Almacenamiento – Resguardo de datos**: [Minio S3](https://min.io/), [Apache HDFS](https://hadoop.apache.org/), entre otras. 
 
