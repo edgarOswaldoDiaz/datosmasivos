@@ -1,4 +1,5 @@
 ## Descripción de los componentes para contenedores
+<img src="/assets/PaaS_and_Contenedores.jpg">
 
 - **Procesos basados en Pipeline CI/CD**: [GitLab CI/CD](https://docs.gitlab.com/ee/ci/), [GitHub Actions](https://docs.github.com/es/actions), [Jenkins](https://www.jenkins.io/), [MLflow](https://mlflow.org/docs/latest/index.html), entre otras.
 
