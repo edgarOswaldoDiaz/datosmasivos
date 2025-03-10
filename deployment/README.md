@@ -1,4 +1,4 @@
-## Descripción de los componentes para contenedores
+## Estrategia para conectar los contnedores utilizados en la plataforma
 <img src="/assets/PaaS_and_Contenedores.jpg">
 
 - **Procesos basados en Pipeline CI/CD**: [GitLab CI/CD](https://docs.gitlab.com/ee/ci/), [MLflow](https://mlflow.org/docs/latest/index.html), entre otras.
