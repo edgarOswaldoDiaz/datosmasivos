@@ -2,8 +2,8 @@
 <img src="/assets/PaaS_and_Contenedores.jpg">
 
 ### **Procesos basados en Pipeline CI/CD**: 
-[GitLab CI/CD](https://docs.gitlab.com/ee/ci/) : Es una herramienta de integración y entrega continua (CI/CD) integrada en GitLab que permite la automatización de pruebas, compilación y despliegue de software.  
-[MLflow](https://mlflow.org/docs/latest/index.html) : Plataforma de gestión del ciclo de vida de modelos de aprendizaje automático (ML), que facilita el seguimiento de experimentos, gestión de modelos y despliegue en producción.
+- [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) : Es una herramienta de integración y entrega continua (CI/CD) integrada en GitLab que permite la automatización de pruebas, compilación y despliegue de software.  
+- [MLflow](https://mlflow.org/docs/latest/index.html) : Plataforma de gestión del ciclo de vida de modelos de aprendizaje automático (ML), que facilita el seguimiento de experimentos, gestión de modelos y despliegue en producción.
 
 - **Acceso a datos (autenticación y autorización)**: [Keycloak](https://www.keycloak.org/), [OpenMetadata](https://open-metadata.org/).
 
