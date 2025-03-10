@@ -13,7 +13,7 @@
 
 - **Integración de datos**: [Apache Trino](https://trino.io/), [Apache AirFlow](https://airflow.apache.org/).
 
-- **Analítica y ciencia de datos**: [MLib](https://spark.apache.org/mllib/), [Tensorflow](https://www.tensorflow.org/?hl=es-419), [Pytorch](https://pytorch.org/), entre otras. 
+- **Analítica y ciencia de datos**: [Pytorch](https://pytorch.org/). 
 
 - **Visualización de datos**: [Apache Superset](https://superset.apache.org/docs/intro), [Grafana](https://grafana.com/), [Apache Echart](https://echarts.apache.org/en/index.html), entre otras.
 
