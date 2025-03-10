@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16.2
+    container_name: postgres_mlflow
+    restart: always
+    environment:
+      POSTGRES_USER: mlflow
+      POSTGRES_PASSWORD: mlflowpassword
+      POSTGRES_DB: mlflowdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mlflow:
+    image: ubuntu/mlflow
+    container_name: mlflow_server
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      MLFLOW_TRACKING_URI: postgresql://mlflow:mlflowpassword@postgres:5432/mlflowdb
+    ports:
+      - "5000:5000"
+    command: ["mlflow", "server", "--backend-store-uri", "postgresql://mlflow:mlflowpassword@postgres:5432/mlflowdb", "--default-artifact-root", "s3://my-bucket/", "--host", "0.0.0.0"]
+
+volumes:
+  postgres_data:
