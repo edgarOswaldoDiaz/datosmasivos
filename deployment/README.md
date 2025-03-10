@@ -5,13 +5,13 @@
 
 - **Acceso a datos (autenticación y autorización)**: [Keycloak](https://www.keycloak.org/), [OpenMetadata](https://open-metadata.org/).
 
-- **Extracción, validación, carga de datos**: Apache NiFi](https://nifi.apache.org/), [Apache Kafka](https://kafka.apache.org/), [Apache Spark](https://spark.apache.org/), [Apache Dask](https://docs.dask.org/en/stable/), entre otras.
+- **Extracción, validación, carga de datos**: [Apache Spark](https://spark.apache.org/).
 
-- **Almacenamiento – Resguardo de datos**: [Minio S3](https://min.io/), [Apache HDFS](https://hadoop.apache.org/), entre otras. 
+- **Almacenamiento – Resguardo de datos**: [Minio S3](https://min.io/). 
 
-- **Homologación, transformación de datos**: [Apache Hive](https://hive.apache.org/), [Apache DBT](https://docs.getdbt.com/), [Apache Druid](https://druid.apache.org/), entre otras.
+- **Homologación, transformación de datos**: [Apache DBT](https://docs.getdbt.com/), [Apache Druid](https://druid.apache.org/).
 
-- **Integración de datos**: [Apache Trino](https://trino.io/), [Apache AirFlow](https://airflow.apache.org/), entre otras.
+- **Integración de datos**: [Apache Trino](https://trino.io/), [Apache AirFlow](https://airflow.apache.org/).
 
 - **Analítica y ciencia de datos**: [MLib](https://spark.apache.org/mllib/), [Tensorflow](https://www.tensorflow.org/?hl=es-419), [Pytorch](https://pytorch.org/), entre otras. 
 
