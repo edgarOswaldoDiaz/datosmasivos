@@ -15,7 +15,7 @@
 
 - **Analítica y ciencia de datos**: [Pytorch](https://pytorch.org/). 
 
-- **Visualización de datos**: [Apache Superset](https://superset.apache.org/docs/intro), [Grafana](https://grafana.com/), [Apache Echart](https://echarts.apache.org/en/index.html), entre otras.
+- **Visualización de datos**: [Apache Superset](https://superset.apache.org/docs/intro), [Grafana](https://grafana.com/).
 
 ________________________________________
 > By CISO oswaldo.diaz@inegi.org.mx 
