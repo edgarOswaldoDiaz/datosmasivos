@@ -5,13 +5,19 @@
 - [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) : Es una herramienta de integración y entrega continua (CI/CD) integrada en GitLab que permite la automatización de pruebas, compilación y despliegue de software.  
 - [MLflow](https://mlflow.org/docs/latest/index.html) : Plataforma de gestión del ciclo de vida de modelos de aprendizaje automático (ML), que facilita el seguimiento de experimentos, gestión de modelos y despliegue en producción.
 
-- **Acceso a datos (autenticación y autorización)**: [Keycloak](https://www.keycloak.org/), [OpenMetadata](https://open-metadata.org/).
+### **Acceso a datos (autenticación y autorización)**:
+- [Keycloak](https://www.keycloak.org/) : Sistema de gestión de identidad y acceso (IAM) de código abierto que proporciona autenticación, autorización y administración de usuarios para aplicaciones y servicios.  
+- [OpenMetadata](https://open-metadata.org/) : Plataforma de metadatos de código abierto para catalogar, gobernar y gestionar datos en entornos de análisis y ciencia de datos.  
 
-- **Extracción, validación, carga de datos**: [Apache Spark](https://spark.apache.org/).
+### **Extracción, validación, carga de datos**:
+- [Apache Spark](https://spark.apache.org/): : Motor de procesamiento distribuido para grandes volúmenes de datos, utilizado en análisis en tiempo real, aprendizaje automático y procesamiento ETL.  
 
-- **Almacenamiento – Resguardo de datos**: [Minio S3](https://min.io/). 
+### **Almacenamiento – Resguardo de datos**:
+- [Minio S3](https://min.io/) : Solución de almacenamiento de objetos compatible con el protocolo Amazon S3, diseñada para entornos locales y en la nube con enfoque en alta disponibilidad y escalabilidad. 
 
-- **Homologación, transformación de datos**: [Apache DBT](https://docs.getdbt.com/), [Apache Druid](https://druid.apache.org/).
+### **Homologación, transformación de datos**:
+- [Apache DBT](https://docs.getdbt.com/)
+- [Apache Druid](https://druid.apache.org/)
 
 - **Integración de datos**: [Apache Trino](https://trino.io/), [Apache AirFlow](https://airflow.apache.org/).
 
@@ -20,17 +26,6 @@
 - **Visualización de datos**: [Apache Superset](https://superset.apache.org/docs/intro), [Grafana](https://grafana.com/).
 
 
-
-Aquí tienes una breve descripción de cada uno de los componentes:  
-
-
-3. **Keycloak**: Sistema de gestión de identidad y acceso (IAM) de código abierto que proporciona autenticación, autorización y administración de usuarios para aplicaciones y servicios.  
-
-4. **OpenMetadata**: Plataforma de metadatos de código abierto para catalogar, gobernar y gestionar datos en entornos de análisis y ciencia de datos.  
-
-5. **Apache Spark**: Motor de procesamiento distribuido para grandes volúmenes de datos, utilizado en análisis en tiempo real, aprendizaje automático y procesamiento ETL.  
-
-6. **Minio S3**: Solución de almacenamiento de objetos compatible con el protocolo Amazon S3, diseñada para entornos locales y en la nube con enfoque en alta disponibilidad y escalabilidad.  
 
 7. **Apache DBT** (*Data Build Tool*)**: Herramienta que permite transformar datos en almacenes analíticos mediante SQL, facilitando la ingeniería de datos y modelado analítico.  
 
