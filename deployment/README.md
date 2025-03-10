@@ -1,11 +1,11 @@
 ## Estrategia para conectar los contnedores utilizados en la plataforma
 <img src="/assets/PaaS_and_Contenedores.jpg">
 
-- **Procesos basados en Pipeline CI/CD**: [GitLab CI/CD](https://docs.gitlab.com/ee/ci/), [MLflow](https://mlflow.org/docs/latest/index.html), entre otras.
+- **Procesos basados en Pipeline CI/CD**: [GitLab CI/CD](https://docs.gitlab.com/ee/ci/), [MLflow](https://mlflow.org/docs/latest/index.html).
 
-- **Acceso a datos (autenticación y autorización)**: [Apache Ranger](https://ranger.apache.org/), [Keycloak](https://www.keycloak.org/), [Apache Atlas](https://atlas.apache.org/#/), [OpenMetadata](https://open-metadata.org/), entre otras.
+- **Acceso a datos (autenticación y autorización)**: [Keycloak](https://www.keycloak.org/), [OpenMetadata](https://open-metadata.org/).
 
-- **Extracción, validación, carga de datos**: [Apache NiFi](https://nifi.apache.org/), [Apache Kafka](https://kafka.apache.org/), [Apache Spark](https://spark.apache.org/), [Apache Dask](https://docs.dask.org/en/stable/), entre otras.
+- **Extracción, validación, carga de datos**: Apache NiFi](https://nifi.apache.org/), [Apache Kafka](https://kafka.apache.org/), [Apache Spark](https://spark.apache.org/), [Apache Dask](https://docs.dask.org/en/stable/), entre otras.
 
 - **Almacenamiento – Resguardo de datos**: [Minio S3](https://min.io/), [Apache HDFS](https://hadoop.apache.org/), entre otras. 
 
