@@ -1,0 +1,10 @@
+services:
+  jupyter:
+    image: quay.io/jupyter/pytorch-notebook:cuda12-latest
+    runtime: nvidia # Habilita el soporte para NVIDIA CUDA Tookit versión 12
+    ports:
+      - "8886:8888" # Expone el puerto 8888 del contenedor al host
+    volumes:
+      - ./notebooks:/home/jovyan/work # Monta el directorio local ./notebooks en /home/jovyan/work dentro del contenedor
+    environment:
+      JUPYTER_ENABLE_LAB: "yes" # Habilita JupyterLab por defecto
