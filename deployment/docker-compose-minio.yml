@@ -1,6 +1,4 @@
 # Servicio local de Minio 
-version: '3.8'
-
 services:
   minio:
     image: minio/minio:latest
