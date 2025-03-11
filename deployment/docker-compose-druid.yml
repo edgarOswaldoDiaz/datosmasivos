@@ -1,0 +1,45 @@
+services:
+  druid:
+    image: apache/druid:latest
+    container_name: druid
+    ports:
+      - "8888:8888"  # Druid Console
+      - "8081:8081"  # Druid Broker
+      - "8082:8082"  # Druid Coordinator
+      - "8083:8083"  # Druid Historical
+      - "8090:8090"  # Druid Overlord
+      - "3306:3306"  # MySQL (si lo usas para metadata storage)
+    environment:
+      - DRUID_XMX=1g
+      - DRUID_XMS=1g
+      - DRUID_MAXDIRECTMEMORYSIZE=2g
+    volumes:
+      - ./druid_data:/var/druid
+    networks:
+      - druid_network
+
+  zookeeper:
+    image: zookeeper:3.7.0
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - druid_network
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_USER: druid
+      POSTGRES_PASSWORD: druid
+      POSTGRES_DB: druid
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    networks:
+      - druid_network
+
+networks:
+  druid_network:
+    driver: bridge
