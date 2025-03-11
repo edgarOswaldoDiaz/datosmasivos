@@ -1,4 +1,3 @@
-version: "3.6"
 services:
       Servicio_Jupyter:
         image: "jupyter/datascience-notebook:latest"
