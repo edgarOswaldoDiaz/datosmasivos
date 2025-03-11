@@ -1,0 +1,39 @@
+services:
+  superset:
+    image: apache/superset
+    container_name: superset
+    restart: always
+    ports:
+      - "8088:8088"
+    environment:
+      - SUPERSET_LOAD_EXAMPLES=yes
+      - SUPERSET_SECRET_KEY=your_secret_key_here
+      - SUPERSET_CONFIG_PATH=/etc/superset/superset_config.py
+    volumes:
+      - superset_home:/etc/superset
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:16
+    container_name: superset_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: superset
+      POSTGRES_PASSWORD: superset
+      POSTGRES_DB: superset
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:latest
+    container_name: superset_redis
+    restart: always
+    volumes:
+      - redis_data:/data
+
+volumes:
+  superset_home:
+  postgres_data:
+  redis_data:
