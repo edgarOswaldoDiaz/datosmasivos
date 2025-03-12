@@ -10,7 +10,7 @@
 - [OpenMetadata](https://open-metadata.org/) : Plataforma de metadatos de código abierto para catalogar, gobernar y gestionar datos en entornos de análisis y ciencia de datos.  
 
 ### **Extracción, validación, carga de datos**:
-- [Apache Spark](https://spark.apache.org/): : Motor de procesamiento distribuido para grandes volúmenes de datos, utilizado en análisis en tiempo real, aprendizaje automático y procesamiento ETL.  
+- [Apache Spark](https://spark.apache.org/): Motor de procesamiento distribuido para grandes volúmenes de datos, utilizado en análisis en tiempo real, aprendizaje automático y procesamiento ETL.  
 
 ### **Almacenamiento – Resguardo de datos**:
 - [Minio S3](https://min.io/) : Solución de almacenamiento de objetos compatible con el protocolo Amazon S3, diseñada para entornos locales y en la nube con enfoque en alta disponibilidad y escalabilidad. 
