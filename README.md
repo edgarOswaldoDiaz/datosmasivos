@@ -10,7 +10,7 @@ Estrategia para implementar una plataforma que permita la ingesta, almacenamient
 - [La revolución de los datos masivos.](assets/revoluciondatosmasivos.md)
 - Infraestructura de los datos masivos --> | [Cloud](assets/computoenlanube.md) | [IoT](assets/IoT.md) | [Hadoop](assets/DatosMasivosHadoop.md) | [Spark](assets/DatosMasivosSpark.md)
 - Análisis de datos masivos --> | [Yarn, Tez, Spark](assets/yarn_tez_spark.md) | [SQL & NoSQL](assets/sql_nosql.md) | [PySpark](assets/datos_masivos_python.md) | [SQL](assets/analisis_datos_sql.md)
-- Gráficos y representación de datos masivos.
+- [Gráficos y representación de datos masivos](assets/graficos_datos-masivos).
 - Nuevas tendencias tecnológicas y sociales de datos masivos.
   
 ____________________________________
