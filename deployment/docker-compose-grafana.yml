@@ -1,3 +1,4 @@
+# Cesar Omar Martin Rodriguez
 services:
   grafana:
     image: grafana/grafana:latest
@@ -9,13 +10,11 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
-      - grafana_data:/var/lib/grafana
+      - ./grafana_data:/var/lib/grafana  # Carpeta local para persistencia
     networks:
       - grafana_network
 
-volumes:
-  grafana_data:
-    driver: local
+# Ya no usamos volumes: grafana_data, porque montamos una carpeta local
 
 networks:
   grafana_network:
