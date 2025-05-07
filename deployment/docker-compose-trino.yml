@@ -1,17 +1,12 @@
+version: '3.8'
 services:
   trino:
-    image: trinodb/trino:latest
+    image: docker.io/trinodb/trino
     container_name: trino
-    restart: unless-stopped
     ports:
       - "8080:8080"
-    environment:
-      - TRINO_MEMORY_MAX=4GB
     volumes:
-      - ./trino-config:/etc/trino
-    networks:
-      - trino-network
-
-networks:
-  trino-network:
-    driver: bridge
+      - "trino-config:/etc/trino/catalog"
+    restart: unless-stopped
+volumes:
+  trino-config:
