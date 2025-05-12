@@ -1,15 +1,18 @@
+version: '3.8'
+
 services:
-  dbt:
-    image: xemuliam/dbt
-    volumes:
-      - ./dbt_project:/usr/app/dbt_project # Monta tu proyecto dbt local en el contenedor
-      - ./profiles.yml:/usr/app/profiles.yml # Monta tu archivo profiles.yml
-    working_dir: /usr/app/dbt_project # Establece el directorio de trabajo en el proyecto dbt
-    command: ["dbt", "run"] # Comando dbt a ejecutar (puedes cambiarlo)
+  postgres:
+    image: postgres:15
+    container_name: dbt_postgres
     environment:
-      # Variables de entorno para tu conexión de base de datos (ejemplo para PostgreSQL)
-      DBT_POSTGRES_HOST: "your_db_host"
-      DBT_POSTGRES_PORT: "5432"
-      DBT_POSTGRES_USER: "your_db_user"
-      DBT_POSTGRES_PASSWORD: "your_db_password"
-      DBT_POSTGRES_DATABASE: "your_db_name"
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dbtdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:
