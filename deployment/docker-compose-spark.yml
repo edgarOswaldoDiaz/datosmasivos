@@ -1,34 +1,89 @@
-services:
-  spark-master:
-    image: apache/spark:latest
-    ports:
-      - "7077:7077" # Puerto para la comunicación entre workers y master
-      - "8080:8080" # Interfaz web de Spark Master
-    environment:
-      SPARK_MODE: master
-    volumes:
-      - ./data:/opt/spark/data # Opcional: monta un volumen para tus datos
-
-  spark-worker-1:
-    image: apache/spark:latest
-    depends_on:
-      - spark-master
-    ports:
-      - "8081:8081" # Interfaz web del worker
-    environment:
-      SPARK_MODE: worker
-      SPARK_MASTER_URL: spark://spark-master:7077
-    volumes:
-      - ./data:/opt/spark/data # Opcional: monta un volumen para tus datos
-
-  spark-worker-2:
-    image: apache/spark:latest
-    depends_on:
-      - spark-master
-    ports:
-      - "8082:8082" # Interfaz web del worker
-    environment:
-      SPARK_MODE: worker
-      SPARK_MASTER_URL: spark://spark-master:7077
-    volumes:
-      - ./data:/opt/spark/data # Opcional: monta un volumen para tus datos
+# Servicio para exponer el Spark master
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-master
+spec:
+  selector:
+    app: spark
+    role: master
+  ports:
+    - name: spark
+      port: 7077
+      targetPort: 7077
+    - name: webui
+      port: 8080
+      targetPort: 8080
+---
+# Pod del master
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spark-master
+  labels:
+    app: spark
+    role: master
+spec:
+  containers:
+    - name: master
+      image: apache/spark:latest
+      command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
+      ports:
+        - containerPort: 7077
+        - containerPort: 8080
+      volumeMounts:
+        - mountPath: /opt/spark/data
+          name: shared-data
+  volumes:
+    - name: shared-data
+      hostPath:
+        path: /Users/ivan/Desktop/DataConteiners
+        type: Directory
+---
+# Pod del primer worker
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spark-worker-1
+  labels:
+    app: spark
+    role: worker
+spec:
+  containers:
+    - name: worker
+      image: apache/spark:latest
+      command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
+      ports:
+        - containerPort: 8081
+      volumeMounts:
+        - mountPath: /opt/spark/data
+          name: shared-data
+  volumes:
+    - name: shared-data
+      hostPath:
+        path: /Users/ivan/Desktop/DataConteiners
+        type: Directory
+---
+# Pod del segundo worker
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spark-worker-2
+  labels:
+    app: spark
+    role: worker
+spec:
+  containers:
+    - name: worker
+      image: apache/spark:latest
+      command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
+      ports:
+        - containerPort: 8082
+      volumeMounts:
+        - mountPath: /opt/spark/data
+          name: shared-data
+  volumes:
+    - name: shared-data
+      hostPath:
+        path: /Users/ivan/Desktop/DataConteiners
+        type: Directory
