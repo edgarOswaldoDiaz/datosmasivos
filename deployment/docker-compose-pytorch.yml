@@ -1,10 +1,20 @@
-services:
-  jupyter:
-    image: quay.io/jupyter/pytorch-notebook:cuda12-latest
-    runtime: nvidia # Habilita el soporte para NVIDIA CUDA Tookit versión 12
-    ports:
-      - "8886:8888" # Expone el puerto 8888 del contenedor al host
-    volumes:
-      - ./notebooks:/home/jovyan/work # Monta el directorio local ./notebooks en /home/jovyan/work dentro del contenedor
-    environment:
-      JUPYTER_ENABLE_LAB: "yes" # Habilita JupyterLab por defecto
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pytorch-pod
+spec:
+  containers:
+    - name: pytorch
+      image: pytorch/pytorch:latest  # La imagen base tiene Python y PyTorch
+      ports:
+        - containerPort: 8888
+      command: ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+      volumeMounts:
+        - mountPath: /mnt/shared
+          name: shared-volume
+      workingDir: /mnt/shared
+  volumes:
+    - name: shared-volume
+      hostPath:
+        path: /Users/ivan/Desktop/DataConteiners
+        type: Directory
