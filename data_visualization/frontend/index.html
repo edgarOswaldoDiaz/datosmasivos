@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Graph Viewer</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+  <h2>Graphs Data Model</h2>
+  <div id="main" style="width: 100%; height: 800px;"></div>
+
+  <script>
+    const chart = echarts.init(document.getElementById('main'));
+
+    fetch('http://localhost:8000/graph')
+      .then(response => response.json())
+      .then(data => {
+        const option = {
+          title: {
+            text: 'Visualización de Modelo de Datos'
+          },
+          tooltip: {},
+          series: [{
+            type: 'graph',
+            layout: 'force',
+            roam: true,
+            label: {
+              show: true
+            },
+            force: {
+              repulsion: 100
+            },
+            data: data.nodes,
+            links: data.links
+          }]
+        };
+        chart.setOption(option);
+      });
+  </script>
+</body>
+</html>
