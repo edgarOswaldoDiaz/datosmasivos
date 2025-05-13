@@ -1,31 +1,260 @@
-services:
-  keycloak:
-    image: quay.io/keycloak/keycloak:latest
-    container_name: keycloak
-    command: start-dev
-    environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
-      - KC_DB=postgres
-      - KC_DB_URL=jdbc:postgresql://db:5432/keycloak
-      - KC_DB_USERNAME=keycloak
-      - KC_DB_PASSWORD=keycloak
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-    restart: always
-
-  db:
-    image: postgres:16
-    container_name: keycloak-db
-    environment:
-      - POSTGRES_DB=keycloak
-      - POSTGRES_USER=keycloak
-      - POSTGRES_PASSWORD=keycloak
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    restart: always
-
-volumes:
-  pgdata:
+{
+  "Id": "77bec33866875b829d52257ee4678a8aa30be8248ba71db00523c3894b0c7c5d",
+  "Created": "2025-05-05T06:31:15.32366052Z",
+  "Path": "/opt/keycloak/bin/kc.sh",
+  "Args": [
+    "start-dev"
+  ],
+  "State": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 143,
+    "Error": "",
+    "StartedAt": "2025-05-05T06:34:27.584193132Z",
+    "FinishedAt": "2025-05-06T04:39:44.820116091Z"
+  },
+  "Image": "sha256:152827b20b9ee1746530b412cdaae434c43176c15dd303de35bf65fc3226a4d9",
+  "ResolvConfPath": "",
+  "HostnamePath": "",
+  "HostsPath": "",
+  "LogPath": "",
+  "Name": "/keycloak",
+  "RestartCount": 0,
+  "Driver": "overlay",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": [],
+  "HostConfig": {
+    "Binds": [],
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "journald",
+      "Config": null
+    },
+    "NetworkMode": "bridge",
+    "PortBindings": {
+      "8080/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "8080"
+        }
+      ]
+    },
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "Annotations": {
+      "io.container.manager": "libpod",
+      "org.opencontainers.image.stopSignal": "15",
+      "org.systemd.property.KillSignal": "15",
+      "org.systemd.property.TimeoutStopUSec": "uint64 10000000"
+    },
+    "CapAdd": [],
+    "CapDrop": [],
+    "CgroupnsMode": "",
+    "Dns": [],
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": [],
+    "GroupAdd": [],
+    "IpcMode": "shareable",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "private",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": [],
+    "UTSMode": "private",
+    "UsernsMode": "",
+    "ShmSize": 65536000,
+    "Runtime": "oci",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 0,
+    "NanoCpus": 0,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": null,
+    "BlkioDeviceReadBps": null,
+    "BlkioDeviceWriteBps": null,
+    "BlkioDeviceReadIOps": null,
+    "BlkioDeviceWriteIOps": null,
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": [],
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 0,
+    "MemorySwappiness": 0,
+    "OomKillDisable": false,
+    "PidsLimit": 2048,
+    "Ulimits": [
+      {
+        "Name": "RLIMIT_NOFILE",
+        "Hard": 1048576,
+        "Soft": 1048576
+      },
+      {
+        "Name": "RLIMIT_NPROC",
+        "Hard": 1048576,
+        "Soft": 1048576
+      }
+    ],
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "MaskedPaths": null,
+    "ReadonlyPaths": null
+  },
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/containers/storage/overlay/e6ee63155880ab0b7d230088e5e6130e14957a0cf130871ba1f0496f0cd2b8e6/diff:/var/lib/containers/storage/overlay/70169c3ea9220d245c7b1a4054055b0eef60618eb5e8120cdd947dd4ecf48231/diff:/var/lib/containers/storage/overlay/f39fc072eca62b6498a7e46e0049820497644e862ec8429c4462f604ded7bcbf/diff:/var/lib/containers/storage/overlay/f093ac9ac06828e805df14a03c682eb194505821ab569c7fee688694b2211fa6/diff:/var/lib/containers/storage/overlay/456a106fc69abcc6e07bbd99e09cdb5b34d4bbd88f7043293e012be50189f055/diff",
+      "UpperDir": "/var/lib/containers/storage/overlay/755c3f4aea19a0cb813eb198c71578d27a0cc60d50dab6af230b1954ef59a274/diff",
+      "WorkDir": "/var/lib/containers/storage/overlay/755c3f4aea19a0cb813eb198c71578d27a0cc60d50dab6af230b1954ef59a274/work"
+    },
+    "Name": "overlay"
+  },
+  "SizeRootFs": 0,
+  "Mounts": [],
+  "Config": {
+    "Hostname": "77bec3386687",
+    "Domainname": "",
+    "User": "1000",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "8080/tcp": {},
+      "8443/tcp": {},
+      "9000/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "container=podman",
+      "LANG=en_US.UTF-8",
+      "KC_RUN_IN_CONTAINER=true",
+      "KEYCLOAK_ADMIN_PASSWORD=admin",
+      "KEYCLOAK_ADMIN=admin",
+      "HOME=/opt/keycloak",
+      "HOSTNAME=77bec3386687"
+    ],
+    "Cmd": [
+      "start-dev"
+    ],
+    "Image": "quay.io/keycloak/keycloak:latest",
+    "Volumes": null,
+    "WorkingDir": "/",
+    "Entrypoint": [
+      "/opt/keycloak/bin/kc.sh"
+    ],
+    "OnBuild": null,
+    "Labels": {
+      "architecture": "x86_64",
+      "build-date": "2025-02-17T07:21:18Z",
+      "com.redhat.build-host": "",
+      "com.redhat.component": "",
+      "com.redhat.license_terms": "",
+      "description": "Keycloak Server Image",
+      "distribution-scope": "public",
+      "io.buildah.version": "1.39.0-dev",
+      "io.k8s.description": "Keycloak Server Image",
+      "io.k8s.display-name": "Keycloak Server",
+      "io.openshift.expose-services": "",
+      "io.openshift.tags": "keycloak security identity",
+      "maintainer": "https://www.keycloak.org/",
+      "name": "keycloak",
+      "org.opencontainers.image.created": "2025-02-28T10:04:23.596Z",
+      "org.opencontainers.image.description": "",
+      "org.opencontainers.image.documentation": "https://www.keycloak.org/documentation",
+      "org.opencontainers.image.licenses": "Apache-2.0",
+      "org.opencontainers.image.revision": "e7109eeda3e2630bb65640a6a322f0cb6ff6ddd6",
+      "org.opencontainers.image.source": "https://github.com/keycloak-rel/keycloak-rel",
+      "org.opencontainers.image.title": "keycloak-rel",
+      "org.opencontainers.image.url": "https://github.com/keycloak-rel/keycloak-rel",
+      "org.opencontainers.image.version": "26.1.3",
+      "release": "",
+      "summary": "Keycloak Server Image",
+      "url": "https://www.keycloak.org/",
+      "vcs-ref": "",
+      "vcs-type": "git",
+      "vendor": "https://www.keycloak.org/",
+      "version": "26.1.3"
+    },
+    "StopSignal": "15",
+    "StopTimeout": 10
+  },
+  "NetworkSettings": {
+    "Bridge": "",
+    "SandboxID": "",
+    "SandboxKey": "",
+    "Ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "8080"
+        }
+      ],
+      "8443/tcp": null,
+      "9000/tcp": null
+    },
+    "HairpinMode": false,
+    "LinkLocalIPv6Address": "",
+    "LinkLocalIPv6PrefixLen": 0,
+    "SecondaryIPAddresses": null,
+    "SecondaryIPv6Addresses": null,
+    "EndpointID": "",
+    "Gateway": "",
+    "GlobalIPv6Address": "",
+    "GlobalIPv6PrefixLen": 0,
+    "IPAddress": "",
+    "IPPrefixLen": 0,
+    "IPv6Gateway": "",
+    "MacAddress": "",
+    "Networks": {
+      "mynetwork": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "77bec3386687"
+        ],
+        "MacAddress": "",
+        "DriverOpts": null,
+        "NetworkID": "mynetwork",
+        "EndpointID": "",
+        "Gateway": "",
+        "IPAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  }
+}
