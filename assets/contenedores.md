@@ -117,7 +117,7 @@ persona:
   edad: 50
   habilidades:
     - ciberseguridad
-    - provacidad de datos
+    - privacidad de datos
     - normatividad en TICs
   contacto:
     correo: oswaldo.diaz@inegi.org.mx
