@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: minioFinal
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data
+    volumes:
+      - C:\Users\angel\Desktop\carpeta2:/data
+
+  jupyter:
+    image: jupyter/all-spark-notebook
+    container_name: jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - C:\Users\angel\Desktop\carpeta2\work:/home/jovyan/work
+    depends_on:
+      - minio
+
+networks:
+  default:
+    name: my_dev_net
