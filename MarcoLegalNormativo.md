@@ -38,7 +38,7 @@ AI-Thena utilizará un sistema de RAG para responder consultas a partir de un ve
 
 También se recomienda observar principios de **IA ética y explicable** definidos por organismos como:
 
-- **OCDE (Organización para la Cooperación y el Desarrollo Económicos)**
+- ### OCDE (Organización para la Cooperación y el Desarrollo Económicos)
 La OCDE fue una de las primeras organizaciones internacionales en adoptar formalmente una serie de **Principios sobre Inteligencia Artificial (2019)**, los cuales han sido respaldados por múltiples países. Estos principios buscan orientar el desarrollo de sistemas de IA hacia un beneficio social amplio, promoviendo:
 
 - **IA centrada en el ser humano**: Los sistemas deben beneficiar a las personas y al planeta, maximizando el bienestar y sostenibilidad.
@@ -51,7 +51,7 @@ La OCDE fue una de las primeras organizaciones internacionales en adoptar formal
 Estos principios guían la necesidad de que AI-Thena sea transparente en su toma de decisiones, especialmente cuando el sistema filtre, clasifique o responda con base en información semántica. La rendición de cuentas y la explicabilidad deben integrarse desde el diseño.
 
 ---
-- **UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura)**
+- ### UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura)
 En 2021, la UNESCO aprobó la **Recomendación sobre la Ética de la Inteligencia Artificial**, un marco global que va más allá de la privacidad e incluye valores culturales, sociales y humanos en el desarrollo de la IA. Algunos de sus pilares clave son:
 
 - **Derechos humanos como eje rector**: La IA debe respetar los derechos fundamentales y la dignidad de todas las personas.
@@ -64,7 +64,7 @@ En 2021, la UNESCO aprobó la **Recomendación sobre la Ética de la Inteligenci
 Implica que, además del cumplimiento legal, AI-Thena debe diseñarse considerando el impacto social y cultural del análisis automatizado de redes sociales. También sugiere evaluar continuamente los posibles efectos no deseados, incluyendo sesgos en los datos o desigualdad en los resultados ofrecidos por el sistema.
 
 ---
-- **NIST (Instituto Nacional de Estándares y Tecnología - EE. UU.)**
+- ### NIST (Instituto Nacional de Estándares y Tecnología - EE. UU.)
 El NIST ha desarrollado un marco técnico detallado para la gestión del riesgo en sistemas de inteligencia artificial: el **AI Risk Management Framework (AI RMF 1.0)**, publicado en 2023. Este marco se centra en mitigar riesgos asociados con el diseño, desarrollo, despliegue y uso de sistemas de IA. Sus principios clave incluyen:
 
 - **Validez y confiabilidad**: Los sistemas deben comportarse como se espera en distintas condiciones.
