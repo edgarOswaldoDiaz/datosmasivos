@@ -38,9 +38,45 @@ AI-Thena utilizará un sistema de RAG para responder consultas a partir de un ve
 
 También se recomienda observar principios de **IA ética y explicable** definidos por organismos como:
 
-- **OCDE**
-- **UNESCO**
-- **NIST**
+- **OCDE (Organización para la Cooperación y el Desarrollo Económicos)**
+La OCDE fue una de las primeras organizaciones internacionales en adoptar formalmente una serie de **Principios sobre Inteligencia Artificial (2019)**, los cuales han sido respaldados por múltiples países. Estos principios buscan orientar el desarrollo de sistemas de IA hacia un beneficio social amplio, promoviendo:
+
+- **IA centrada en el ser humano**: Los sistemas deben beneficiar a las personas y al planeta, maximizando el bienestar y sostenibilidad.
+- **Transparencia y explicabilidad**: Los sistemas deben ser comprensibles para los usuarios, particularmente en decisiones automatizadas.
+- **Robustez y seguridad**: Las aplicaciones de IA deben operar de manera confiable y segura, minimizando sesgos y errores.
+- **Responsabilidad**: Los desarrolladores e implementadores deben ser responsables de los resultados y funcionamiento del sistema.
+- **Rendición de cuentas**: Se deben establecer mecanismos para supervisar y auditar el comportamiento de los sistemas.
+
+**Relevancia para AI-Thena**:  
+Estos principios guían la necesidad de que AI-Thena sea transparente en su toma de decisiones, especialmente cuando el sistema filtre, clasifique o responda con base en información semántica. La rendición de cuentas y la explicabilidad deben integrarse desde el diseño.
+
+---
+- **UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura)**
+En 2021, la UNESCO aprobó la **Recomendación sobre la Ética de la Inteligencia Artificial**, un marco global que va más allá de la privacidad e incluye valores culturales, sociales y humanos en el desarrollo de la IA. Algunos de sus pilares clave son:
+
+- **Derechos humanos como eje rector**: La IA debe respetar los derechos fundamentales y la dignidad de todas las personas.
+- **Inclusión y no discriminación**: Se debe prevenir cualquier tipo de sesgo algorítmico que pueda derivar en exclusión social o discriminación.
+- **Diversidad cultural y lingüística**: Promueve el respeto por las particularidades locales y el multilingüismo en los sistemas IA.
+- **Impacto ambiental**: Se alienta el desarrollo de tecnologías sostenibles que reduzcan su huella ecológica.
+- **Gobernanza y supervisión ética**: Implementar mecanismos interdisciplinarios de evaluación ética durante todo el ciclo de vida del sistema.
+
+**Relevancia para AI-Thena**:  
+Implica que, además del cumplimiento legal, AI-Thena debe diseñarse considerando el impacto social y cultural del análisis automatizado de redes sociales. También sugiere evaluar continuamente los posibles efectos no deseados, incluyendo sesgos en los datos o desigualdad en los resultados ofrecidos por el sistema.
+
+---
+- **NIST (Instituto Nacional de Estándares y Tecnología - EE. UU.)**
+El NIST ha desarrollado un marco técnico detallado para la gestión del riesgo en sistemas de inteligencia artificial: el **AI Risk Management Framework (AI RMF 1.0)**, publicado en 2023. Este marco se centra en mitigar riesgos asociados con el diseño, desarrollo, despliegue y uso de sistemas de IA. Sus principios clave incluyen:
+
+- **Validez y confiabilidad**: Los sistemas deben comportarse como se espera en distintas condiciones.
+- **Explicabilidad y trazabilidad**: Se deben entender las decisiones del sistema, y se debe poder seguir el origen de sus resultados.
+- **Seguridad y resiliencia**: Proteger el sistema de ataques o manipulaciones.
+- **Gestión del sesgo**: Detectar y corregir desviaciones perjudiciales durante el entrenamiento o la inferencia.
+- **Transparencia operativa**: Documentar todo el ciclo de vida del sistema de forma accesible.
+
+**Relevancia para AI-Thena**:  
+Este marco se puede adoptar como guía técnica para el monitoreo continuo del comportamiento del sistema, la trazabilidad de las consultas (queries), la evaluación de la calidad de los embeddings y la verificación de la robustez del vector index ante entradas adversarias o fuera de distribución.
+
+---
 
 En particular, en lo relativo a:
 - Trazabilidad de las decisiones generadas por el sistema.
@@ -48,6 +84,14 @@ En particular, en lo relativo a:
 - Transparencia en la lógica de recuperación de información y generación de respuestas.
 
 ---
+
+Para cumplir con los marcos legales y éticos mencionados, AI-Thena deberá:
+
+- Diseñarse con una arquitectura explicable desde el nivel de vectorización hasta la generación de respuestas.
+- Documentar todas las etapas del pipeline de RAG, desde el preprocesamiento hasta la recuperación semántica.
+- Asegurar la participación de personas en el proceso de toma de decisiones cuando las respuestas generadas puedan impactar derechos.
+- Minimizar el uso de datos personales y garantizar su anonimización en todo momento.
+- Incluir evaluaciones éticas y técnicas periódicas para detectar sesgos, brechas de seguridad o impactos no intencionados.
 
 ## 4. Visualización y monitoreo (Dashboard)
 
