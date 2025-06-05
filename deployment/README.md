@@ -1,4 +1,4 @@
-## Estrategia para conectar los contnedores utilizados en la plataforma
+## Estrategia para conectar los contenedores utilizados en la plataforma
 <img src="/assets/PaaS_and_Contenedores.jpg">
 
 ### **Procesos basados en Pipeline CI/CD**: 
