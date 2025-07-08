@@ -1,0 +1,105 @@
+# Geocidificador
+version: '3.8'
+
+services:
+  # HDFS NameNode: master for HDFS metadata
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    container_name: hdfs-namenode
+    ports:
+      - "9870:9870"   # Web UI for NameNode
+    environment:
+      - CLUSTER_NAME=bigdata-cluster
+    volumes:
+      - namenode-data:/hadoop/dfs/name
+    networks:
+      - bigdata
+
+  # HDFS DataNode: stores actual HDFS blocks
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: hdfs-datanode
+    ports:
+      - "9864:9864"   # Web UI for DataNode
+    environment:
+      - NAMENODE_HOST=namenode
+      - CLUSTER_NAME=bigdata-cluster
+    depends_on:
+      - namenode
+    volumes:
+      - datanode-data:/hadoop/dfs/data
+    networks:
+      - bigdata
+
+  # Apache Spark Master: schedules jobs and manages workers
+  spark-master:
+    image: bitnami/spark:3
+    container_name: spark-master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+    ports:
+      - "7077:7077"   # Spark master port
+      - "8080:8080"   # Web UI for Spark master
+    networks:
+      - bigdata
+
+  # Apache Spark Worker: executes tasks as directed by master
+  spark-worker:
+    image: bitnami/spark:3
+    container_name: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+    ports:
+      - "8081:8081"   # Web UI for Spark worker
+    depends_on:
+      - spark-master
+    networks:
+      - bigdata
+
+  # Elasticsearch: search and analytics engine
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node   # Single-node cluster for development
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"   # REST API
+      - "9300:9300"   # Internal transport
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    networks:
+      - bigdata
+
+  # Streamlit app: intuitive UI to interact with the above services
+  streamlit:
+    image: streamlit/streamlit:latest
+    container_name: streamlit-ui
+    ports:
+      - "8501:8501"   # Streamlit default port
+    volumes:
+      - ./app:/app   # Mount your Streamlit application code here
+    command: streamlit run /app/main.py
+    depends_on:
+      - spark-master
+      - elasticsearch
+      - namenode
+    networks:
+      - bigdata
+
+# Define named volumes for persistent storage
+volumes:
+  namenode-data:
+  datanode-data:
+  es-data:
+
+# Shared network for all big data services
+networks:
+  bigdata:
+    driver: bridge
