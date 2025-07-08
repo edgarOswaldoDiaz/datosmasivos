@@ -1,0 +1,87 @@
+# Recolección y procesamiento 
+version: '3.8'
+
+# =============================
+# Configuración de servicios ELK
+# =============================
+services:
+  # Servicio Elasticsearch: almacena y indexa datos
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node   # Despliegue en nodo único para desarrollo
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m  # Asignación de memoria JVM
+    ports:
+      - "9200:9200"  # Puerto REST de Elasticsearch
+      - "9300:9300"  # Puerto para clustering interno
+    volumes:
+      - esdata:/usr/share/elasticsearch/data  # Persistencia de datos
+    networks:
+      - elk
+
+  # Servicio Logstash: recolección y transformación de logs
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.9
+    container_name: logstash
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro  # Pipelines de configuración
+    ports:
+      - "5044:5044"  # Puerto Beats
+      - "5000:5000"  # Puerto TCP
+    depends_on:
+      - elasticsearch  # Inicia después de Elasticsearch
+    networks:
+      - elk
+
+  # Servicio Kibana: interfaz de visualización de datos
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.9
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200  # Conexión a Elasticsearch
+    ports:
+      - "5601:5601"  # Puerto de acceso a Kibana
+    depends_on:
+      - elasticsearch  # Inicia después de Elasticsearch
+    networks:
+      - elk
+
+# =============================
+# Configuración de Apache Spark
+# =============================
+  # Nodo maestro de Spark: coordina el clúster
+  spark-master:
+    image: bitnami/spark:3.3.1
+    container_name: spark-master
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "7077:7077"  # Puerto de conexión de trabajadores
+      - "8080:8080"  # Interfaz web del maestro
+    networks:
+      - spark-net
+
+  # Nodo trabajador de Spark: ejecuta tareas
+  spark-worker:
+    image: bitnami/spark:3.3.1
+    container_name: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077  # Dirección del maestro
+    depends_on:
+      - spark-master  # Inicia después del maestro
+    networks:
+      - spark-net
+
+# Volúmenes para persistencia de datos
+volumes:
+  esdata:
+    driver: local
+
+# Redes definidas para aislar el tráfico
+networks:
+  elk:
+    driver: bridge  # Red para ELK stack
+  spark-net:
+    driver: bridge  # Red para clúster Spark
